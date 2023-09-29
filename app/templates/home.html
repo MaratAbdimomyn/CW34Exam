@@ -3,7 +3,9 @@
 {% block content %}
     <ul>
         {% for i in one1 %}
-        <li><a href={% url 'about' i.pk %}><h3> {{ i.name }} </h3></a></li>
+        <li><a href={% url 'about' i.pk %}><h3> {{ i.name }} {{ i.price }}</h3></a></li>
+        <li><img src="{{ i.image.url }}" alt=""></li>
         {% endfor %}
     </ul>
+    <a href={% url 'create' %}><h3>Добавить объект</h3></a>
 {% endblock %}

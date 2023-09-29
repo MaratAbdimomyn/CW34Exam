@@ -4,5 +4,6 @@
     <ul>
         <li> {{ one2.production_year }} </li>
         <li> {{ one2.price }} </li>
+        <a href={% url 'delete' one2.pk %}><p>Удалить объект</p></a>
     </ul>
 {% endblock %}
