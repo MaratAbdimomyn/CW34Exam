@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Загрузить изображение</button>
-  </form>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button class="submit" type="submit">Загрузить изображение</button>
+</form>
 {% endblock %}

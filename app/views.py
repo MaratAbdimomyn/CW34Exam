@@ -4,7 +4,6 @@ from django.urls import reverse_lazy
 from .forms import *
 from django.views.generic import ListView, DetailView, CreateView, DeleteView
 from .models import *
-from django.shortcuts import get_object_or_404
 
 class PictureView(ListView):
     model = Picture
@@ -28,3 +27,13 @@ class DeletePicture(DeleteView):
     pk_url_kwarg = 'pk'
     success_url = reverse_lazy('home')
     
+class ArtistView(ListView):
+    model = Artist
+    template_name = 'artist.html'
+    context_object_name = 'one3'
+
+class CreateArtist(CreateView):
+    model = Artist
+    form_class = ArtistForm
+    template_name = 'create_artist.html'
+    success_url = reverse_lazy('artist')

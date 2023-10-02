@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<ul class="home_grid">
+    {% for i in one3 %}
+    <div class="home_grid_elements">
+        <li><b>Имя: {{ i.name }} {{ i.name }}</b></li>
+        <li>Картины: {{ i.pictures }}</li>
+        {% endfor %}
+    </ul>
+    <div class="add">
+        <a href={% url 'create_artist' %}><h3 class="add_button">Добавить
+                художника</h3></a></div>
+    {% endblock %}

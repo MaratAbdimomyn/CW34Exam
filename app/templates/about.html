@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <ul>
-        <li> {{ one2.production_year }} </li>
-        <li> {{ one2.price }} </li>
-        <a href={% url 'delete' one2.pk %}><p>Удалить объект</p></a>
-    </ul>
+<ul>
+    <li>Год: {{ one2.production_year }} </li>
+    <li>Цена: {{ one2.price }} </li>
+    <img src="{{ one2.image.url }}" alt="">
+    <a href={% url 'delete' one2.pk %}>
+        <div class="delete_button">
+            <p>Удалить объект</p>
+        </div>
+    </a>
+</ul>
 {% endblock %}

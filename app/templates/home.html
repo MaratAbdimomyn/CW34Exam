@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <ul>
-        {% for i in one1 %}
-        <li><a href={% url 'about' i.pk %}><h3> {{ i.name }} {{ i.price }}</h3></a></li>
-        <li><img src="{{ i.image.url }}" alt=""></li>
-        {% endfor %}
-    </ul>
-    <a href={% url 'create' %}><h3>Добавить объект</h3></a>
+<ul class="home_grid">
+    {% for i in one1 %}
+    <a href={% url 'about' i.pk %}><div class="home_grid_elements">
+            <li><b> {{ i.name }} </b></li>
+            <li>Price: {{ i.price }}</li>
+            <li><img class="home_images" src="{{ i.image.url }}" alt=""></li></div></a>
+    {% endfor %}
+</ul>
+<div class="add">
+    <a href={% url 'create' %}><h3 class="add_button">Добавить картину</h3></a></div>
 {% endblock %}

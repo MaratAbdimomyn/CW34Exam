@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -5,9 +6,15 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        <link rel="stylesheet" href={% static 'css/style.css' %}>
     </head>
     <body>
-        <h3>Галерея</h3>
+        <div class="navbar">
+            <a href={% url 'home' %}><h3 class="navbar_elements">Галерея</h3></a>
+            <a href={% url 'create' %}><h3 class="navbar_elements">Добавить
+                    картину</h3></a>
+            <h3 class="navbar_elements">Все картины</h3>
+        </div>
         {% block content %}
 
         {% endblock %}
