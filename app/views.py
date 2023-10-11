@@ -1,9 +1,12 @@
-from django.shortcuts import render
+from distutils.command.clean import clean
+from http.client import HTTPResponse
+from django.shortcuts import render, redirect
 from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
 from .forms import *
 from django.views.generic import ListView, DetailView, CreateView, DeleteView
 from .models import *
+from django import forms
 
 class PictureView(ListView):
     model = Picture
@@ -20,6 +23,18 @@ class CreatePicture(CreateView):
     form_class = PictureForm
     template_name = 'create.html'
     success_url = reverse_lazy('home')
+
+    def post(self, request, *args, **kwargs):
+        data = PictureForm(request.POST)
+        x = int(request.POST['production_year'])
+        if x > 2023:
+            message = "Картина должна быть не позднее 2023 года"
+            raise forms.ValidationError(message)
+        if data.is_valid():
+            data.save()
+        else:
+            return HTTPResponse('asdasdasdas')
+        return redirect('home')
 
 class DeletePicture(DeleteView):    
     model = Picture
