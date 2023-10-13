@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h4 class="form-header">Вход в систему</h4>
+
+<form method="post">
+    {% csrf_token %}
+
+    {{ form.username.label }}
+    {{ form.username }}
+    {{ form.password1.label }}
+    {{ form.password1 }}
+    {{ form.password2.label }}
+    {{ form.password2 }}
+
+    <button type="submit">Войти</button>
+</form>
+
+{% endblock %}

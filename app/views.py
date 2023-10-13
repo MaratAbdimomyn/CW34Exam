@@ -7,6 +7,14 @@ from .forms import *
 from django.views.generic import ListView, DetailView, CreateView, DeleteView
 from .models import *
 from django import forms
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
+
+class SignUp(CreateView):
+    model = User
+    form_class = UserCreationForm
+    template_name = 'signup.html'
+    success_url = reverse_lazy('signup')
 
 class PictureView(ListView):
     model = Picture

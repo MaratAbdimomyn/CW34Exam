@@ -10,7 +10,7 @@ class Picture(Gallery):
     name = models.CharField(max_length=40)
     production_year = models.IntegerField()
     price = models.CharField(max_length=40)
-    image = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='images', default='images/monalisa.jpg')
 
 class Artist(models.Model):
     name = models.CharField(max_length=40)

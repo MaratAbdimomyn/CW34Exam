@@ -6,7 +6,9 @@
     <a href={% url 'about' i.pk %}><div class="home_grid_elements">
             <li><b> {{ i.name }} </b></li>
             <li>Price: {{ i.price }}</li>
-            <li><img class="home_images" src="{{ i.image.url }}" alt=""></li></div></a>
+            <img class="home_images" src="{{ i.image.url }}" alt="">
+        </div>
+    </a>
     {% endfor %}
 </ul>
 <div class="add">
