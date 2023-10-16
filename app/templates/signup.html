@@ -16,5 +16,11 @@
 
     <button type="submit">Войти</button>
 </form>
+{% if messages %}
+        {% for message in messages %}
+                {{ message }}
+        {% endfor %}
+    </ul>
+{% endif %}
 
 {% endblock %}

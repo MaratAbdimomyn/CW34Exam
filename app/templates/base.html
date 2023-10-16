@@ -9,11 +9,15 @@
         <link rel="stylesheet" href={% static 'css/style.css' %}>
     </head>
     <body>
-        <div class="navbar">
+
+        <div {% if request.user.is_authenticated %} class="navbar2" {% else %}
+            class="navbar" {% endif %}>
             <a href={% url 'home' %}><h3 class="navbar_elements">Галерея</h3></a>
             <a href={% url 'create' %}><h3 class="navbar_elements">Добавить картину</h3></a>
-            <a href={% url 'signup' %}><h3 class="navbar_elements">Все картины</h3></a>
+            <a href={% url 'login' %}><h3 class="navbar_elements">Войти на сайт</h3></a>
+            <a href={% url 'signup' %}><h3 class="navbar_elements">Регистрация</h3></a>
         </div>
+
         {% block content %}
 
         {% endblock %}

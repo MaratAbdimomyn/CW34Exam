@@ -9,12 +9,19 @@ from .models import *
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.views import LoginView
 
-class SignUp(CreateView):
+class SignUp(SuccessMessageMixin, CreateView):
     model = User
     form_class = UserCreationForm
     template_name = 'signup.html'
     success_url = reverse_lazy('signup')
+    success_message = 'Учетная запись создана'
+
+class Login(LoginView):
+    template_name = 'login.html'
+    next_page = reverse_lazy('home')
 
 class PictureView(ListView):
     model = Picture
