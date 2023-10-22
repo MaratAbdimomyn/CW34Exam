@@ -10,17 +10,31 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 
 class SignUp(SuccessMessageMixin, CreateView):
     model = User
     form_class = UserCreationForm
     template_name = 'signup.html'
-    success_url = reverse_lazy('signup')
+    success_url = reverse_lazy('login')
     success_message = 'Учетная запись создана'
+
+    """def post(self, request, *args, **kwargs):
+        q = UserCreationForm(request.POST)
+        w = request.POST['password1']
+        e = request.POST['password2']
+        if w != e:
+            message = "Пароли должны быть одинаковые"
+            raise forms.ValidationError(message)
+        if q.is_valid():
+            q.save()"""
 
 class Login(LoginView):
     template_name = 'login.html'
+    next_page = reverse_lazy('home')
+
+class Logout(LogoutView):
+    template_name = 'logout.html'
     next_page = reverse_lazy('home')
 
 class PictureView(ListView):
@@ -42,9 +56,13 @@ class CreatePicture(CreateView):
     def post(self, request, *args, **kwargs):
         data = PictureForm(request.POST)
         x = int(request.POST['production_year'])
+        z = int(request.POST['price'])
         if x > 2023:
             message = "Картина должна быть не позднее 2023 года"
             raise forms.ValidationError(message)
+        if z <= 0:
+            message2 = "Цена картины не может быть отрицательной"
+            raise forms.ValidationError(message2)
         if data.is_valid():
             data.save()
         else:
@@ -57,6 +75,8 @@ class DeletePicture(DeleteView):
     pk_url_kwarg = 'pk'
     success_url = reverse_lazy('home')
     
+
+
 class ArtistView(ListView):
     model = Artist
     template_name = 'artist.html'

@@ -20,8 +20,9 @@ p {
 }
 
 body {
-    background-image: url('../img/1989436.jpg');
-    background-size: cover;
+    background-color: salmon;
+    margin: 0px;
+    padding: 0px;
 }
 
 .navbar {
@@ -35,12 +36,12 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color:lightsalmon;
-    color: white;
+    background-color: rgb(87, 207, 133);
 }
 
 .navbar_elements {
     margin-right: 50px;
+    color: black;
 }
 
 .home_grid {
@@ -81,7 +82,7 @@ body {
 .add_button {
     width: 182px;
     height: 30px;
-    background-color: darksalmon;
+    background-color: darkblue;
     border-radius: 10px;
     padding: 20px;
     color: white;

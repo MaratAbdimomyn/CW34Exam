@@ -10,12 +10,15 @@
     </head>
     <body>
 
-        <div {% if request.user.is_authenticated %} class="navbar2" {% else %}
-            class="navbar" {% endif %}>
+        <div {% if request.user.is_authenticated %} class="navbar2" {% else %} class="navbar" {% endif %}>
             <a href={% url 'home' %}><h3 class="navbar_elements">Галерея</h3></a>
             <a href={% url 'create' %}><h3 class="navbar_elements">Добавить картину</h3></a>
+            {% if request.user.is_authenticated %}
+            <a href={% url 'logout' %}><h3 class="navbar_elements">Выйти</h3></a>
+            {% else %}
             <a href={% url 'login' %}><h3 class="navbar_elements">Войти на сайт</h3></a>
             <a href={% url 'signup' %}><h3 class="navbar_elements">Регистрация</h3></a>
+            {% endif %}
         </div>
 
         {% block content %}

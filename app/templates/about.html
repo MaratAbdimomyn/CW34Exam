@@ -5,10 +5,12 @@
     <li>Год: {{ one2.production_year }} </li>
     <li>Цена: {{ one2.price }} </li>
     <img src="{{ one2.image.url }}" alt="">
+    {% if request.user.is_authenticated %}
     <a href={% url 'delete' one2.pk %}>
         <div class="delete_button">
             <p>Удалить объект</p>
         </div>
     </a>
+    {% endif %}
 </ul>
 {% endblock %}
